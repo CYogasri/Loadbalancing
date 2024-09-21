@@ -1,0 +1,27 @@
+version: "3"
+services:
+  app1:
+    build: ./food
+    ports: 
+      - "5001:80"
+
+  app2:
+    build: ./transaction
+    ports: 
+      - "5002:80"
+
+  app3:
+    build: ./order
+    ports:
+      - "5003:80"
+
+  app4:
+    build: ./nginx
+    ports: 
+      - "8080:80"
+
+    depends_on:
+            - app1
+            - app2
+            - app3
+        
